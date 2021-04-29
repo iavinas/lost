@@ -100,13 +100,13 @@ class Control extends Component {
     handleUndo(){
         if (!this.hist.isEmpty()){
             const cState = this.hist.undoMia()
-            
+
             const miaIds = {
                 miaIds: cState.entry.images.map(image => {
                 return image.id
-            })}            
+            })}
             this.props.getSpecialMiaAnnos(miaIds, this.props.getWorkingOnAnnoTask)
-            
+
         }
     }
 
@@ -117,7 +117,7 @@ class Control extends Component {
     renderSelectedLabel(){
         if(this.props.selectedLabel){
             return(
-                <div className="mia-tag"> 
+                <div className="mia-tag">
                 <div>{this.props.selectedLabel.label}</div>
             </div>
             )
@@ -134,7 +134,7 @@ class Control extends Component {
                             items={this.props.labels}
                             shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
                             getItemValue={item => item.label}
-                            renderInput={(props) => {return <input {...props} style={{width: '300px'}} className='form-control'/>}} 
+                            renderInput={(props) => {return <input {...props} style={{width: '300px'}} className='form-control'/>}}
                             renderItem={(item, highlighted) =>
                             <div
                                 className={`item ${highlighted ? 'item-highlighted' : ''}`}
@@ -147,18 +147,18 @@ class Control extends Component {
                             onChange={e => this.setState({ value: e.target.value })}
                             onSelect={(value, label) => {this.setState({ value: value });this.handleAddLabel(label)}}
                         />
-                    
+
                     {this.renderSelectedLabel()}
                     </InputGroup>
                 </Col>
                 <Col xs='3' sm='3' lg='3'>
-                    <ButtonGroup className="float-left"> 
+                    <ButtonGroup className="float-left">
                         <Button disabled={this.hist.isEmpty()} className='btn-info' onClick={this.handleUndo}><Icon name='arrow left' /></Button>
                         <Button disabled={this.props.selectedLabel ? false:true} className='btn-info' onClick={this.handleSubmit}><Icon name='arrow right' /></Button>
                     </ButtonGroup>
                 </Col>
                 <Col xs='3' sm='3' lg='3'>
-                    <ButtonGroup className="float-right"> 
+                    <ButtonGroup className="float-right">
                             <Button className='btn-default' onClick={this.handleReverse}><i className="fa fa-arrows-h"></i> Reverse</Button>
                             <Button className='btn-default' onClick={this.handleZoomIn}><i className="fa fa-search-plus"></i></Button>
                             <Button className='btn-default' onClick={this.handleZoomOut}><i className="fa fa-search-minus"></i></Button>
@@ -171,10 +171,6 @@ class Control extends Component {
                                 <DropdownItem onClick={this.handleMaxAmount}>5</DropdownItem>
                                 <DropdownItem onClick={this.handleMaxAmount}>10</DropdownItem>
                                 <DropdownItem onClick={this.handleMaxAmount}>20</DropdownItem>
-                                <DropdownItem onClick={this.handleMaxAmount}>50</DropdownItem>
-                                <DropdownItem onClick={this.handleMaxAmount}>100</DropdownItem>
-                                <DropdownItem onClick={this.handleMaxAmount}>150</DropdownItem>
-                                <DropdownItem onClick={this.handleMaxAmount}>200</DropdownItem>
                             </DropdownMenu>
                             </ButtonDropdown>
                     </ButtonGroup>

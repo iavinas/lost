@@ -22,7 +22,8 @@ $image-margin: 14px;
     max-width: 720px;
     max-height: 400px;
     min-width: 20px;
-    width: auto;
+    width: 400px;
+    height: 720px;
     &-zoomed {
         position: relative;
         z-index: 2;
@@ -40,4 +41,4 @@ $image-margin: 14px;
 
 body{
     background-image: linear-gradient(to top, #eee8d5 60%, white 100%) !important;
-}  
+}
